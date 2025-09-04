@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Users2, Video, MessageSquare } from "lucide-react";
+import { BookOpen, Users2, MessageSquare, Building2 } from "lucide-react";
 
 const Services = ({ id }: { id?: string }) => {
   const services = [
@@ -8,22 +8,25 @@ const Services = ({ id }: { id?: string }) => {
       icon: Users2,
       title: "Clases Individuales 👤",
       description: "Atención 100% personalizada. Trabajamos tus objetivos específicos con un plan diseñado solo para vos",
-      price: "Desde $30/hora",
       features: ["Plan súper personalizado", "Horario que se adapta a vos", "Todo el material incluido"]
     },
     {
       icon: BookOpen,
       title: "Clases Grupales 👥", 
       description: "Grupos pequeños (máx 4 personas) del mismo nivel. ¡Aprender en grupo es más divertido!",
-      price: "Desde $20/hora",
       features: ["Máximo 4 estudiantes", "Ambiente relajado", "Práctica con pares"]
     },
     {
       icon: MessageSquare,
       title: "Exámenes Internacionales 🎯",
       description: "Preparación especializada para TOEFL, IELTS, Cambridge. ¡Aprobá con confianza!",
-      price: "Desde $35/hora",
       features: ["Simulacros reales", "Estrategias probadas", "Seguimiento semanal"]
+    },
+    {
+      icon: Building2,
+      title: "Clases para Empresas 🏢",
+      description: "Capacitación corporativa adaptada a las necesidades de tu equipo. Inglés profesional y efectivo",
+      features: ["Programas corporativos", "Horarios flexibles", "Enfoque empresarial"]
     }
   ];
 
@@ -43,17 +46,16 @@ const Services = ({ id }: { id?: string }) => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="p-8 hover:shadow-medium transition-all duration-300 hover:-translate-y-2 bg-background border-border/50 group text-center">
+              <Card key={index} className="p-8 hover:shadow-medium transition-all duration-300 hover:-translate-y-2 bg-background border-border/50 group text-center h-full flex flex-col">
                 <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
                   <Icon className="w-10 h-10 text-primary-foreground" />
                 </div>
                 <h3 className="text-2xl font-semibold mb-4 text-foreground">{service.title}</h3>
-                <p className="text-muted-foreground mb-6 text-base">{service.description}</p>
-                <div className="text-3xl font-bold text-primary mb-6">{service.price}</div>
+                <p className="text-muted-foreground mb-6 text-base flex-grow">{service.description}</p>
                 <ul className="space-y-3 mb-8">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="text-muted-foreground flex items-center justify-center">
@@ -64,7 +66,7 @@ const Services = ({ id }: { id?: string }) => {
                 </ul>
                 <Button 
                   onClick={scrollToWhatsApp}
-                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 text-lg"
+                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 text-lg mt-auto"
                 >
                   Agendá tu clase hoy 🚀
                 </Button>

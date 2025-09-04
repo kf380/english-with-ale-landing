@@ -44,18 +44,6 @@ const Contact = ({ id }: { id?: string }) => {
       title: "WhatsApp",
       content: "¡Chateá conmigo!",
       link: "https://wa.me/5491123456789?text=¡Hola Ale! Me interesa agendar mi clase gratuita 😊"
-    },
-    {
-      icon: MapPin,
-      title: "Ubicación",
-      content: "Clases online y presenciales",
-      link: null
-    },
-    {
-      icon: Clock,
-      title: "Horarios",
-      content: "Lun - Sab: 8:00 - 20:00",
-      link: null
     }
   ];
 
