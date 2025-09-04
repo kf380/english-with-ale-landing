@@ -6,74 +6,67 @@ const Services = ({ id }: { id?: string }) => {
   const services = [
     {
       icon: Users2,
-      title: "Clases Individuales",
-      description: "Atención personalizada 1:1 enfocada en tus objetivos específicos",
-      price: "Desde $25/hora",
-      features: ["Plan de estudio personalizado", "Horario flexible", "Material incluido"]
-    },
-    {
-      icon: Video,
-      title: "Clases Online",
-      description: "Aprende desde la comodidad de tu hogar con tecnología interactiva",
-      price: "Desde $20/hora",
-      features: ["Clases por Zoom", "Grabaciones disponibles", "Material digital"]
+      title: "Clases Individuales 👤",
+      description: "Atención 100% personalizada. Trabajamos tus objetivos específicos con un plan diseñado solo para vos",
+      price: "Desde $30/hora",
+      features: ["Plan súper personalizado", "Horario que se adapta a vos", "Todo el material incluido"]
     },
     {
       icon: BookOpen,
-      title: "Preparación Exámenes",
-      description: "TOEFL, IELTS, Cambridge - preparación especializada",
-      price: "Desde $30/hora",
-      features: ["Tests de práctica", "Estrategias específicas", "Seguimiento detallado"]
+      title: "Clases Grupales 👥", 
+      description: "Grupos pequeños (máx 4 personas) del mismo nivel. ¡Aprender en grupo es más divertido!",
+      price: "Desde $20/hora",
+      features: ["Máximo 4 estudiantes", "Ambiente relajado", "Práctica con pares"]
     },
     {
       icon: MessageSquare,
-      title: "Conversación",
-      description: "Mejora tu fluidez con sesiones de conversación dinámica",
-      price: "Desde $18/hora",
-      features: ["Temas variados", "Corrección en tiempo real", "Grupos pequeños"]
+      title: "Exámenes Internacionales 🎯",
+      description: "Preparación especializada para TOEFL, IELTS, Cambridge. ¡Aprobá con confianza!",
+      price: "Desde $35/hora",
+      features: ["Simulacros reales", "Estrategias probadas", "Seguimiento semanal"]
     }
   ];
 
-  const scrollToContact = () => {
-    document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToWhatsApp = () => {
+    window.open('https://wa.me/5491123456789?text=¡Hola Ale! Me interesa conocer más sobre tus clases 😊', '_blank');
   };
 
   return (
-    <section id={id} className="py-24 px-4 bg-background">
+    <section id={id} className="py-24 px-4 bg-primary/10">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            Mis <span className="text-primary">Servicios</span>
+            ¿Qué tipo de <span className="text-primary">clases</span> ofrezco? 🤔
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Elige el formato que mejor se adapte a tus necesidades y objetivos de aprendizaje
+            Elegí la modalidad que más te guste. Todas están diseñadas para que aprendas inglés de verdad ✨
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="p-8 hover:shadow-medium transition-all duration-300 hover:-translate-y-2 bg-card border-border/50 group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-secondary rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
-                  <Icon className="w-8 h-8 text-secondary-foreground" />
+              <Card key={index} className="p-8 hover:shadow-medium transition-all duration-300 hover:-translate-y-2 bg-background border-border/50 group text-center">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-primary rounded-full mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-10 h-10 text-primary-foreground" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-card-foreground">{service.title}</h3>
-                <p className="text-muted-foreground mb-4">{service.description}</p>
-                <div className="text-2xl font-bold text-primary mb-4">{service.price}</div>
-                <ul className="space-y-2 mb-6">
+                <h3 className="text-2xl font-semibold mb-4 text-foreground">{service.title}</h3>
+                <p className="text-muted-foreground mb-6 text-base">{service.description}</p>
+                <div className="text-3xl font-bold text-primary mb-6">{service.price}</div>
+                <ul className="space-y-3 mb-8">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-sm text-muted-foreground flex items-center">
+                    <li key={idx} className="text-muted-foreground flex items-center justify-center">
                       <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
                       {feature}
                     </li>
                   ))}
                 </ul>
                 <Button 
-                  onClick={scrollToContact}
-                  className="w-full bg-gradient-primary hover:opacity-90 transition-opacity duration-300"
+                  onClick={scrollToWhatsApp}
+                  className="w-full bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold py-3 text-lg"
                 >
-                  Consultar
+                  Agendá tu clase hoy 🚀
                 </Button>
               </Card>
             );

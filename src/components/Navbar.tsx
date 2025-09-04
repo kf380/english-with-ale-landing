@@ -41,13 +41,13 @@ const Navbar = () => {
                 onClick={() => scrollToSection('about')}
                 className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
               >
-                Sobre Mí
+                Sobre Ale
               </button>
               <button
                 onClick={() => scrollToSection('services')}
                 className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
               >
-                Servicios
+                Clases
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
@@ -68,9 +68,9 @@ const Navbar = () => {
           <div className="hidden md:block">
             <Button 
               onClick={() => scrollToSection('contact')}
-              className="bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:from-primary/90 hover:to-secondary/90"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
-              Aprende Inglés HOY
+              Agendá tu clase hoy 🚀
             </Button>
           </div>
 
@@ -99,13 +99,13 @@ const Navbar = () => {
                 onClick={() => scrollToSection('about')}
                 className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
               >
-                Sobre Mí
+                Sobre Ale
               </button>
               <button
                 onClick={() => scrollToSection('services')}
                 className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
               >
-                Servicios
+                Clases
               </button>
               <button
                 onClick={() => scrollToSection('testimonials')}
@@ -122,9 +122,9 @@ const Navbar = () => {
               <div className="px-3 py-2">
                 <Button 
                   onClick={() => scrollToSection('contact')}
-                  className="w-full bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:from-primary/90 hover:to-secondary/90"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                 >
-                  Aprende Inglés HOY
+                  Agendá tu clase hoy 🚀
                 </Button>
               </div>
             </div>

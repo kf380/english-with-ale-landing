@@ -36,14 +36,14 @@ const Contact = ({ id }: { id?: string }) => {
     {
       icon: Mail,
       title: "Email",
-      content: "ale@englishwithale.com",
-      link: "mailto:ale@englishwithale.com"
+      content: "englishwithale@gmail.com",
+      link: "mailto:englishwithale@gmail.com"
     },
     {
       icon: Phone,
-      title: "Teléfono",
-      content: "+1 (555) 123-4567",
-      link: "tel:+15551234567"
+      title: "WhatsApp",
+      content: "¡Chateá conmigo!",
+      link: "https://wa.me/5491123456789?text=¡Hola Ale! Me interesa agendar mi clase gratuita 😊"
     },
     {
       icon: MapPin,
@@ -64,10 +64,10 @@ const Contact = ({ id }: { id?: string }) => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            ¡Empecemos <span className="text-primary">juntos!</span>
+            ¡Empezá tu transformación <span className="text-primary">hoy!</span> 🎯
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Contáctame para agendar tu clase de prueba gratuita y conocer cómo puedo ayudarte
+            Mandame un mensaje y agendemos tu <strong>clase gratuita</strong>. Te voy a contar exactamente cómo puedo ayudarte a alcanzar tus objetivos ✨
           </p>
         </div>
 
@@ -117,10 +117,10 @@ const Contact = ({ id }: { id?: string }) => {
                 />
                 <Button 
                   type="submit" 
-                  className="w-full bg-gradient-primary hover:opacity-90 transition-opacity duration-300"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                   size="lg"
                 >
-                  Enviar Mensaje
+                  Enviar Mensaje 📩
                 </Button>
               </form>
             </Card>

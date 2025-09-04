@@ -2,31 +2,31 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-teacher.jpg";
 
 const Hero = () => {
-  const scrollToContact = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToWhatsApp = () => {
+    window.open('https://wa.me/5491123456789?text=¡Hola Ale! Me interesa agendar mi clase gratuita de inglés 😊', '_blank');
   };
 
   return (
-    <section id="hero" className="min-h-screen bg-gradient-to-br from-primary via-primary/90 to-secondary flex items-center justify-center px-4 pt-16">
+    <section id="hero" className="min-h-screen bg-primary flex items-center justify-center px-4 pt-16">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div className="text-center lg:text-left space-y-8 z-10">
-          <h1 className="text-4xl md:text-6xl font-bold text-white leading-tight">
-            English with{" "}
-            <span className="text-secondary drop-shadow-lg">
-              Ale!
+          <h1 className="text-4xl md:text-6xl font-bold text-primary-foreground leading-tight">
+            Aprendé inglés de forma{" "}
+            <span className="text-secondary font-extrabold drop-shadow-lg">
+              personalizada con Ale! 🚀
             </span>
           </h1>
-          <p className="text-xl text-white/90 max-w-2xl">
-            Clases personalizadas de inglés para todos los niveles. Metodología 
-            práctica y divertida que te ayudará a hablar inglés con confianza.
+          <p className="text-xl text-primary-foreground/90 max-w-2xl">
+            ¡Hola! Soy Ale y te ayudo a dominar el inglés con clases súper personalizadas. 
+            Metodología práctica, divertida y adaptada 100% a tus objetivos ✨
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
             <Button 
               size="lg" 
-              onClick={scrollToContact}
-              className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 rounded-full shadow-lg"
+              onClick={scrollToWhatsApp}
+              className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold px-8 py-4 rounded-full shadow-lg text-lg"
             >
-              Aprende Inglés HOY
+              Agendá tu clase gratis 🎯
             </Button>
           </div>
         </div>
