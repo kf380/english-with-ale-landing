@@ -10,7 +10,7 @@ const About = ({ id }: { id?: string }) => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-foreground">
-                Conocé a <span className="text-primary">Ale 👋</span>
+                Conóceme <span className="text-primary">👋</span>
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
