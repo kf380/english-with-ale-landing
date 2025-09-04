@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
-const Contact = () => {
+const Contact = ({ id }: { id?: string }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -60,7 +60,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contacto" className="py-20">
+    <section id={id} className="py-24 px-4 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">

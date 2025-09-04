@@ -1,7 +1,7 @@
 import { GraduationCap, Users, Clock, Award } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
-const About = () => {
+const About = ({ id }: { id?: string }) => {
   const features = [
     {
       icon: GraduationCap,
@@ -26,7 +26,7 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-muted/30">
+    <section id={id} className="py-24 px-4 bg-muted/50">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">

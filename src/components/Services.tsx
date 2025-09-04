@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { BookOpen, Users2, Video, MessageSquare } from "lucide-react";
 
-const Services = () => {
+const Services = ({ id }: { id?: string }) => {
   const services = [
     {
       icon: Users2,
@@ -39,7 +39,7 @@ const Services = () => {
   };
 
   return (
-    <section id="servicios" className="py-20">
+    <section id={id} className="py-24 px-4 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">

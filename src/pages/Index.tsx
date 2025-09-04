@@ -1,3 +1,4 @@
+import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Services from "@/components/Services";
@@ -8,11 +9,12 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <Navbar />
       <Hero />
-      <About />
-      <Services />
-      <Testimonials />
-      <Contact />
+      <About id="about" />
+      <Services id="services" />
+      <Testimonials id="testimonials" />
+      <Contact id="contact" />
       <WhatsAppFloat />
     </div>
   );
