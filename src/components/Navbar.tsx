@@ -23,9 +23,17 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h2 className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              English with Ale
-            </h2>
+            <div className="flex items-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center mr-3">
+                <span className="text-white font-bold text-lg">A</span>
+              </div>
+              <div>
+                <h2 className="text-xl font-bold text-foreground">
+                  English with <span className="text-primary">Ale</span>
+                </h2>
+                <p className="text-xs text-muted-foreground hidden sm:block">Tu profesora favorita 💫</p>
+              </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
