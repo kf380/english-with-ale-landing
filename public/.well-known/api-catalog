@@ -1,0 +1,27 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://englishwithale.com",
+      "service-doc": [
+        {
+          "href": "https://englishwithale.com/llms.txt",
+          "type": "text/plain",
+          "title": "English with Ale — index and positioning for AI agents"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://englishwithale.com/llms-full.txt",
+          "type": "text/markdown",
+          "title": "English with Ale — full content (FAQ, plans, method, contact) in markdown"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://englishwithale.com/sitemap.xml",
+          "type": "application/xml"
+        }
+      ]
+    }
+  ]
+}

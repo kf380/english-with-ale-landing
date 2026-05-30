@@ -1,14 +1,151 @@
+# Robots.txt para English with Ale — https://englishwithale.com
+#
+# Content Signals (contentsignals.org / IETF draft draft-ietf-ai-preferences-vocab):
+# Declarado tanto aquí (donde Cloudflare's Agent Readiness scan lo busca) como en
+# HTTP response header. Política: máxima exposición a AI search — no hay IP única
+# que proteger en esta etapa, queremos ser citados por ChatGPT / Copilot / Claude /
+# Perplexity / Gemini cuando alguien pregunta sobre clases de inglés 1:1 para
+# profesionales latinos en USA. Ver public/_headers para el header HTTP.
+
+User-agent: *
+Allow: /
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# Search engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
+User-agent: Slurp
 Allow: /
 
+User-agent: DuckDuckBot
+Allow: /
+
+# Social media crawlers
 User-agent: facebookexternalhit
 Allow: /
 
-User-agent: *
+User-agent: Twitterbot
 Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+# AI / LLM crawlers — política permisiva por bot, alineada con objetivo de
+# aparecer en respuestas de Copilot, ChatGPT, Claude, Gemini, Apple Intelligence.
+
+# OpenAI
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# Anthropic
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI (Gemini, AI Overviews, Vertex AI)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+# Apple AI (Apple Intelligence, Siri)
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta AI (WhatsApp, IG, FB)
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Amazon (Alexa, Rufus)
+User-agent: Amazonbot
+Allow: /
+
+# DuckDuckGo AI
+User-agent: DuckAssistBot
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Huawei
+User-agent: PetalBot
+Allow: /
+
+# Training crawlers de uso general (Common Crawl alimenta muchos LLMs)
+User-agent: CCBot
+Allow: /
+
+# ByteDance / TikTok
+User-agent: Bytespider
+Allow: /
+
+User-agent: TikTok Spider
+Allow: /
+
+# Otros AI agents emergentes
+User-agent: Manus Bot
+Allow: /
+
+User-agent: Anchor Browser
+Allow: /
+
+User-agent: Novellum AI Crawl
+Allow: /
+
+User-agent: ProRataInc
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+# Archivos web
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: Arquivo Web Crawler
+Allow: /
+
+# Sitemap
+Sitemap: https://englishwithale.com/sitemap.xml

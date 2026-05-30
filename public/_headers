@@ -1,0 +1,27 @@
+# Cloudflare Pages _headers
+# https://developers.cloudflare.com/pages/configuration/headers/
+#
+# Content Signals (contentsignals.org / IETF draft) como HTTP response header.
+# Replica la directiva del robots.txt — algunos crawlers (Cloudflare, Anthropic,
+# OpenAI) consumen el signal de ambos lugares.
+#
+# Política:
+#   ai-train: yes  → permitimos entrenamiento sobre nuestro contenido
+#   search:   yes  → permitimos uso en respuestas generativas (queremos cita)
+#   ai-input: yes  → permitimos uso como contexto en agentes (RAG, browsing)
+
+/*
+  Content-Signal: ai-train=yes, search=yes, ai-input=yes
+  Link: </llms.txt>; rel="describedby"; type="text/plain", </llms-full.txt>; rel="alternate"; type="text/markdown", </sitemap.xml>; rel="sitemap"; type="application/xml", </.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"
+
+/.well-known/api-catalog
+  Content-Type: application/linkset+json; charset=utf-8
+
+/auth.md
+  Content-Type: text/markdown; charset=utf-8
+
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
+
+/llms-full.txt
+  Content-Type: text/plain; charset=utf-8
