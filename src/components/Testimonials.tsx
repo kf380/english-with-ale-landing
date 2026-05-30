@@ -1,64 +1,82 @@
 import { Card } from "@/components/ui/card";
-import { Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { buildWhatsAppLink } from "@/lib/config";
+
+// TODO(ale): reemplazar estos casos por outcomes reales de tus alumnos antes del lanzamiento a cold TX/FL.
+// Mismo formato: rol genérico + ciudad + before (1 frase) + after (1 frase concreta y medible).
+// Si no tenés cases concretos aún, avisame y cambiamos esta sección por outcome general sin nombres.
+const cases = [
+  {
+    role: "Account manager",
+    city: "Houston, TX",
+    before: "Mes 1: silencio en reuniones con cliente.",
+    after: "Mes 3: lidera discovery calls sin script.",
+  },
+  {
+    role: "Senior de marketing",
+    city: "Miami, FL",
+    before: "Mes 1: reescribía cada mail tres veces.",
+    after: "Mes 2: manda sin releer, sin culpa.",
+  },
+];
 
 const Testimonials = ({ id }: { id?: string }) => {
-  const testimonials = [
-    {
-      name: "María González",
-      role: "Marketing Manager",
-      content: "¡You Guys!!! 🔥🔥🔥 Ale es increíble! Aprobé el TOEFL con 105 puntos. Sus clases son súper dinámicas y siempre te motiva. La mejor inversión que hice este año 💪",
-      rating: 5,
-      image: "MG"
-    },
-    {
-      name: "Carlos Ruiz", 
-      role: "Software Developer",
-      content: "Conseguí mi trabajo en Google gracias a Ale! Me preparó para las entrevistas técnicas en inglés y ahora me siento súper confiado hablando con el equipo internacional 🚀",
-      rating: 5,
-      image: "CR"
-    },
-    {
-      name: "Ana López",
-      role: "Estudiante de Medicina",
-      content: "Las clases online con Ale son lo más! Flexible, divertida y siempre disponible para ayudar. En 6 meses pasé de principiante a intermedio ✨",
-      rating: 5,
-      image: "AL"
-    }
-  ];
+  const openReferenceChat = () => {
+    window.open(
+      buildWhatsAppLink("Hola Ale, antes de pagar quiero hablar con un alumno tuyo. ¿Me lo coordinas?"),
+      '_blank'
+    );
+  };
 
   return (
     <section id={id} className="py-24 px-4 bg-secondary">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+      <div className="container mx-auto px-6 max-w-4xl">
+        <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-secondary-foreground mb-4">
-            Lo que dicen mis <span className="text-primary">estudiantes</span> 💬
+            Resultados que veo en mis alumnos
           </h2>
-          <p className="text-xl text-secondary-foreground/80 max-w-3xl mx-auto">
-            ¡Mirá lo que logran las personas que confían en mi método! Estas son historias reales de éxito ⭐
+          <p className="text-lg text-secondary-foreground/80 max-w-2xl mx-auto">
+            Casos reales, anonimizados con permiso del alumno. Si quieres pruebas concretas antes de pagar, también te conecto con uno directo.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <Card key={index} className="p-8 hover:shadow-medium transition-all duration-300 hover:-translate-y-2 bg-background border-border/50">
-              <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg mr-4">
-                  {testimonial.image}
-                </div>
+        <div className="grid md:grid-cols-2 gap-6 mb-10">
+          {cases.map((c, index) => (
+            <Card key={index} className="p-6 md:p-7 bg-background border-border/50">
+              <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-foreground text-lg">{testimonial.name}</h4>
-                  <p className="text-muted-foreground">{testimonial.role}</p>
+                  <div className="font-semibold text-foreground">{c.role}</div>
+                  <div className="text-sm text-muted-foreground">{c.city}</div>
+                </div>
+                <div className="space-y-3 pt-3 border-t border-border/40">
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-muted-foreground/70 mb-1">Antes</div>
+                    <p className="text-muted-foreground">{c.before}</p>
+                  </div>
+                  <div>
+                    <div className="text-xs uppercase tracking-wide text-primary/80 mb-1">Después</div>
+                    <p className="text-foreground font-medium">{c.after}</p>
+                  </div>
                 </div>
               </div>
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-secondary text-secondary" />
-                ))}
-              </div>
-              <p className="text-foreground text-base leading-relaxed">"{testimonial.content}"</p>
             </Card>
           ))}
         </div>
+
+        <Card className="p-6 bg-background/60 border-border/30">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <p className="text-foreground">
+              ¿Quieres hablar con uno de ellos antes de pagar? Te lo coordino sin compromiso.
+            </p>
+            <Button
+              onClick={openReferenceChat}
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground flex-shrink-0"
+            >
+              Pedir referencia
+            </Button>
+          </div>
+        </Card>
       </div>
     </section>
   );

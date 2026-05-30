@@ -1,12 +1,9 @@
 import { MessageCircle } from "lucide-react";
+import { buildWhatsAppLink } from "@/lib/config";
 
 const WhatsAppFloat = () => {
   const handleWhatsAppClick = () => {
-    // Replace with actual WhatsApp number - format: country code + number (no spaces or symbols)
-    const phoneNumber = "1234567890"; // This should be updated with Ale's actual number
-    const message = "Hola! Me interesa conocer más sobre las clases de inglés.";
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    window.open(buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis"), '_blank');
   };
 
   return (
@@ -17,7 +14,7 @@ const WhatsAppFloat = () => {
     >
       <MessageCircle className="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" />
       <span className="absolute -top-12 right-0 bg-card text-card-foreground px-3 py-1 rounded-lg text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-soft whitespace-nowrap">
-        ¡Chatea conmigo!
+        Chatear con Ale
       </span>
     </button>
   );

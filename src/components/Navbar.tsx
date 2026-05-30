@@ -17,6 +17,15 @@ const Navbar = () => {
     }
   };
 
+  const navItems = [
+    { id: 'about', label: 'Sobre Ale' },
+    { id: 'how-it-works', label: 'Método' },
+    { id: 'services', label: 'Planes' },
+    { id: 'for-companies', label: 'Empresas' },
+    { id: 'faq', label: 'FAQ' },
+    { id: 'contact', label: 'Contacto' },
+  ];
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,54 +40,33 @@ const Navbar = () => {
                 <h2 className="text-xl font-bold text-foreground">
                   English with <span className="text-primary">Ale</span>
                 </h2>
-                <p className="text-xs text-muted-foreground hidden sm:block">Tu profesora favorita 💫</p>
+                <p className="text-xs text-muted-foreground hidden sm:block">Inglés 1:1 para tu trabajo</p>
               </div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              <button
-                onClick={() => scrollToSection('hero')}
-                className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
-              >
-                Inicio
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
-              >
-                Sobre mí
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
-              >
-                Clases
-              </button>
-              <button
-                onClick={() => scrollToSection('testimonials')}
-                className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
-              >
-                Testimonios
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="text-foreground hover:text-primary transition-colors px-3 py-2 text-sm font-medium"
-              >
-                Contacto
-              </button>
+            <div className="ml-10 flex items-baseline space-x-6">
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-foreground hover:text-primary transition-colors px-2 py-2 text-sm font-medium"
+                >
+                  {item.label}
+                </button>
+              ))}
             </div>
           </div>
 
           {/* CTA Button Desktop */}
           <div className="hidden md:block">
-            <Button 
-              onClick={() => scrollToSection('contact')}
+            <Button
+              onClick={() => scrollToSection('services')}
               className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
             >
-              Agendá tu clase hoy 🚀
+              Reservar clase gratis
             </Button>
           </div>
 
@@ -97,42 +85,21 @@ const Navbar = () => {
         {isMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
-              <button
-                onClick={() => scrollToSection('hero')}
-                className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
-              >
-                Inicio
-              </button>
-              <button
-                onClick={() => scrollToSection('about')}
-                className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
-              >
-                Sobre mí
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
-              >
-                Clases
-              </button>
-              <button
-                onClick={() => scrollToSection('testimonials')}
-                className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
-              >
-                Testimonios
-              </button>
-              <button
-                onClick={() => scrollToSection('contact')}
-                className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
-              >
-                Contacto
-              </button>
+              {navItems.map((item) => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className="block text-foreground hover:text-primary transition-colors px-3 py-2 text-base font-medium w-full text-left"
+                >
+                  {item.label}
+                </button>
+              ))}
               <div className="px-3 py-2">
-                <Button 
-                  onClick={() => scrollToSection('contact')}
+                <Button
+                  onClick={() => scrollToSection('services')}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                 >
-                  Agendá tu clase hoy 🚀
+                  Reservar clase gratis
                 </Button>
               </div>
             </div>

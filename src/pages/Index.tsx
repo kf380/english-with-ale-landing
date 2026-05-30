@@ -3,7 +3,9 @@ import Hero from "@/components/Hero";
 import About from "@/components/About";
 import HowItWorks from "@/components/HowItWorks";
 import Services from "@/components/Services";
+import ForCompanies from "@/components/ForCompanies";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import Contact from "@/components/Contact";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 
@@ -15,7 +17,9 @@ const Index = () => {
       <About id="about" />
       <HowItWorks id="how-it-works" />
       <Services id="services" />
+      <ForCompanies id="for-companies" />
       <Testimonials id="testimonials" />
+      <FAQ id="faq" />
       <Contact id="contact" />
       <WhatsAppFloat />
     </div>

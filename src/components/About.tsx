@@ -1,55 +1,65 @@
-import { GraduationCap, Users, Clock, Award } from "lucide-react";
-import { Card } from "@/components/ui/card";
+import { MapPin, Clock, GraduationCap } from "lucide-react";
 import heroImage from "@/assets/hero-teacher.jpg";
 
 const About = ({ id }: { id?: string }) => {
   return (
     <section id={id} className="py-24 px-4 bg-background">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-foreground">
-                Conóceme <span className="text-primary">👋</span>
+                Sobre Ale
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  ¡Hola! Soy Alejandra, pero todos me dicen <strong>Ale</strong>. Llevo más de <strong>8 años</strong> ayudando a adultos como vos a dominar el inglés de una forma súper natural y sin estrés.
+                  Soy Alejandra, profesora de inglés. Llevo <strong>8 años</strong> trabajando con adultos profesionales que necesitan usar el inglés todos los días en su trabajo.
                 </p>
                 <p>
-                  Me especializo en <strong>adultos profesionales</strong> y preparación para <strong>exámenes internacionales</strong> (TOEFL, IELTS, Cambridge). Mi filosofía es simple: el inglés se aprende hablando, no memorizando reglas 🗣️
+                  Trabajo principalmente con <strong>latinos que viven en Estados Unidos</strong> — sobre todo en Texas, Florida y California — y con profesionales latinoamericanos que reportan a equipos americanos o que están buscando dar el salto a USA.
                 </p>
                 <p>
-                  Lo que más me gusta es ver cómo mis estudiantes ganan confianza clase tras clase. ¡Es increíble lo que se puede lograr con la metodología correcta! 💪
+                  Mi especialidad no es la gramática avanzada. Es resolver el bloqueo de hablar: el momento en el que entiendes todo lo que pasa en una reunión pero no sabes cómo intervenir, o el mail que reescribes cinco veces antes de mandar.
+                </p>
+                <p>
+                  Ese bloqueo casi nunca es de nivel. Es emocional — vergüenza, miedo a sonar simple, miedo a equivocarte delante de gente que respetas. Lo trato como lo que es: un patrón que se desarma con práctica acompañada, no con más reglas para memorizar.
+                </p>
+                <p>
+                  Como hispanohablante que aprendió inglés siendo adulta, entiendo los bloqueos específicos de pensar en español y tener que hablar en otro idioma. Las sesiones trabajan eso directamente.
                 </p>
               </div>
-              
-              <div className="grid grid-cols-2 gap-4 pt-6">
-                <div className="text-center p-4 bg-primary/10 rounded-lg">
-                  <div className="text-2xl font-bold text-primary">8+ años</div>
-                  <div className="text-sm text-muted-foreground">de experiencia</div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-6">
+                <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg">
+                  <GraduationCap className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-base font-semibold text-foreground">8 años</div>
+                    <div className="text-xs text-muted-foreground">enseñando a profesionales</div>
+                  </div>
                 </div>
-                <div className="text-center p-4 bg-primary/10 rounded-lg">
-                  <div className="text-2xl font-bold text-primary">200+</div>
-                  <div className="text-sm text-muted-foreground">estudiantes exitosos</div>
+                <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg">
+                  <Clock className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-base font-semibold text-foreground">CT / ET</div>
+                    <div className="text-xs text-muted-foreground">disponibilidad horaria USA</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg">
+                  <MapPin className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <div className="text-base font-semibold text-foreground">TX, FL, CA</div>
+                    <div className="text-xs text-muted-foreground">mercados principales</div>
+                  </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
-              <img 
+              <img
                 src={heroImage}
-                alt="Ale - Tu profesora de inglés favorita 😊" 
+                alt="Ale, profesora de inglés"
                 className="rounded-2xl shadow-2xl w-full max-w-md mx-auto relative z-10 object-cover h-96"
               />
-              
-              {/* Elementos decorativos */}
-              <div className="absolute -top-4 -right-4 bg-secondary text-secondary-foreground px-4 py-2 rounded-full font-semibold shadow-lg animate-bounce z-20 text-sm">
-                🎓 Certified
-              </div>
-              <div className="absolute bottom-1/4 -left-6 bg-primary text-primary-foreground px-4 py-2 rounded-full font-semibold shadow-lg animate-pulse z-20 text-sm">
-                ⭐ 5.0 Rating
-              </div>
             </div>
           </div>
         </div>

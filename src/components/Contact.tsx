@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL } from "@/lib/config";
 
 const Contact = ({ id }: { id?: string }) => {
   const [formData, setFormData] = useState({
@@ -17,10 +18,10 @@ const Contact = ({ id }: { id?: string }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to a backend
+    // TODO(kevin): conectar form a backend o servicio tipo Formspree/Resend
     toast({
-      title: "¡Mensaje enviado!",
-      description: "Te contactaré pronto para coordinar tu primera clase.",
+      title: "Mensaje enviado",
+      description: "Te contactamos en menos de 24 horas hábiles.",
     });
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
@@ -36,33 +37,42 @@ const Contact = ({ id }: { id?: string }) => {
     {
       icon: Mail,
       title: "Email",
-      content: "englishwithale@gmail.com",
-      link: "mailto:englishwithale@gmail.com"
+      content: CONTACT_EMAIL,
+      link: `mailto:${CONTACT_EMAIL}`
     },
     {
       icon: Phone,
       title: "WhatsApp",
-      content: "¡Chateá conmigo!",
-      link: "https://wa.me/5491123456789?text=¡Hola Ale! Me interesa agendar mi clase gratuita 😊"
+      content: "Respuesta en horario laboral",
+      link: buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis")
     }
   ];
+
+  if (CALENDLY_URL) {
+    contactInfo.push({
+      icon: Mail,
+      title: "Reservar online",
+      content: "Calendly · ver disponibilidad",
+      link: CALENDLY_URL
+    });
+  }
 
   return (
     <section id={id} className="py-24 px-4 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-foreground mb-4">
-            ¡Empezá tu transformación <span className="text-primary">hoy!</span> 🎯
+            Empezá con una clase diagnóstica gratis
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Mandame un mensaje y agendemos tu <strong>clase gratuita</strong>. Te voy a contar exactamente cómo puedo ayudarte a alcanzar tus objetivos ✨
+            30 minutos sin compromiso. Identificamos tus bloqueos reales con el inglés y te llevás un plan claro al final, decidas o no contratar.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div>
             <Card className="p-8 bg-card border-border/50">
-              <h3 className="text-2xl font-semibold mb-6 text-card-foreground">Envíame un mensaje</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-card-foreground">Contanos qué necesitás</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
@@ -89,26 +99,26 @@ const Contact = ({ id }: { id?: string }) => {
                 </div>
                 <Input
                   name="phone"
-                  placeholder="Tu teléfono (opcional)"
+                  placeholder="Tu WhatsApp (opcional)"
                   value={formData.phone}
                   onChange={handleChange}
                   className="border-border focus:ring-primary"
                 />
                 <Textarea
                   name="message"
-                  placeholder="Cuéntame sobre tus objetivos con el inglés..."
+                  placeholder="¿Para qué necesitás el inglés? (reuniones, entrevistas, mails, etc.)"
                   value={formData.message}
                   onChange={handleChange}
                   required
                   rows={5}
                   className="border-border focus:ring-primary"
                 />
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                   size="lg"
                 >
-                  Enviar Mensaje 📩
+                  Reservar clase diagnóstica gratis
                 </Button>
               </form>
             </Card>
@@ -116,11 +126,11 @@ const Contact = ({ id }: { id?: string }) => {
 
           <div>
             <div className="space-y-6">
-              <h3 className="text-2xl font-semibold text-foreground mb-6">Información de contacto</h3>
+              <h3 className="text-2xl font-semibold text-foreground mb-6">Otros canales</h3>
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 const content = info.link ? (
-                  <a href={info.link} className="text-primary hover:text-primary-dark transition-colors">
+                  <a href={info.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors">
                     {info.content}
                   </a>
                 ) : (
@@ -141,6 +151,12 @@ const Contact = ({ id }: { id?: string }) => {
                   </Card>
                 );
               })}
+              <Card className="p-6 bg-primary/5 border-primary/20">
+                <h4 className="font-semibold text-foreground mb-2">Pagos seguros en USD</h4>
+                <p className="text-sm text-muted-foreground">
+                  Tarjeta de crédito o débito (Visa, Mastercard, Amex). Facturación mensual o trimestral según el plan que elijas.
+                </p>
+              </Card>
             </div>
           </div>
         </div>

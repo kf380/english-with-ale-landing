@@ -1,27 +1,27 @@
 import { Card } from "@/components/ui/card";
-import { Video, Download, MessageSquare, Award } from "lucide-react";
+import { Search, Target, MessageSquare, Video } from "lucide-react";
 
 const HowItWorks = ({ id }: { id?: string }) => {
   const steps = [
     {
-      icon: Video,
-      title: "Clases Online en Vivo",
-      description: "Conectate desde cualquier lugar y aprende de forma interactiva con tecnología de última generación 💻"
+      icon: Search,
+      title: "1. Diagnóstico gratuito",
+      description: "30 minutos donde identificamos exactamente dónde se traba tu inglés profesional. Te llevás un plan claro, sin compromiso de pago."
     },
     {
-      icon: Download,
-      title: "Material Descargable", 
-      description: "Acceso completo a recursos, ejercicios y material de apoyo que podés usar cuando quieras 📚"
+      icon: Target,
+      title: "2. Plan personalizado",
+      description: "Las clases se arman alrededor de tus desafíos reales: reuniones, entrevistas, presentaciones, mails. No usamos libros genéricos."
     },
     {
       icon: MessageSquare,
-      title: "Práctica y Feedback Constante",
-      description: "Corrección en tiempo real y seguimiento personalizado de tu progreso 🚀"
+      title: "3. Práctica diaria por WhatsApp",
+      description: "Te mando ejercicios cortos y audios entre clases. La conversación que pasa fuera del aula es lo que mueve la aguja."
     },
     {
-      icon: Award,
-      title: "Certificación y Exámenes",
-      description: "Preparación especializada para TOEFL, IELTS, Cambridge y certificaciones internacionales ⭐"
+      icon: Video,
+      title: "4. Una clase 1:1 por semana",
+      description: "60 minutos vía Zoom, en español + inglés según haga falta. Te quedan notas y grabación para repasar."
     }
   ];
 
@@ -30,10 +30,10 @@ const HowItWorks = ({ id }: { id?: string }) => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-secondary-foreground mb-4">
-            ¿Cómo funciona? 🤔
+            Cómo trabajamos
           </h2>
           <p className="text-xl text-secondary-foreground/80 max-w-3xl mx-auto">
-            Mi metodología está diseñada para que puedas aprender inglés de la manera más natural y efectiva
+            Un proceso pensado para que el inglés pase de "lo entiendo pero no me animo" a herramienta de trabajo diaria.
           </p>
         </div>
 
