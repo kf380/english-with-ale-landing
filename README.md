@@ -1,73 +1,95 @@
-# Welcome to your Lovable project
+# English with Ale — Landing
 
-## Project info
+Landing page para English with Ale (Alejandra Jarupkin). Sitio público:
+https://englishwithale.com
 
-**URL**: https://lovable.dev/projects/6093e83a-1e96-4422-bd11-bb0b641998f2
+## Stack
 
-## How can I edit this code?
+- Vite 6 + React 18 + TypeScript
+- Tailwind CSS + shadcn/ui
+- react-router-dom (single-page con anchors)
+- Deploy: Cloudflare Pages (auto-deploy desde rama `main`)
 
-There are several ways of editing your application.
+## Setup local
 
-**Use Lovable**
+Requiere Node.js ≥ 20 y npm.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6093e83a-1e96-4422-bd11-bb0b641998f2) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+git clone https://github.com/kf380/english-with-ale-landing.git
+cd english-with-ale-landing
+npm install
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Dev server en `http://localhost:8080`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Build de producción
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Esto ejecuta tres pasos encadenados:
 
-## What technologies are used for this project?
+1. `vite build` — bundle de la app a `dist/`
+2. `node scripts/prerender.mjs` — inyecta 7 schemas JSON-LD (Person, Organization, WebSite, EducationalOccupationalProgram, Service+Offers, FAQPage, BreadcrumbList) en el `<head>` y un bloque de body SEO-readable dentro de `<div id="root">` para crawlers sin JS
+3. `node scripts/indexnow.mjs` — pinga IndexNow (Bing, Yandex, Naver) con las URLs del sitemap
 
-This project is built with:
+Scripts adicionales:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+- `npm run prerender` — solo el paso 2 (útil para testear schemas localmente)
+- `npm run indexnow` — solo el paso 3 (ping manual a IndexNow)
+- `npm run lint` — ESLint
 
-## How can I deploy this project?
+## Estructura
 
-Simply open [Lovable](https://lovable.dev/projects/6093e83a-1e96-4422-bd11-bb0b641998f2) and click on Share -> Publish.
+```
+public/
+  ├── robots.txt              # 40+ AI bots permitidos + Content-Signal directive
+  ├── _headers                # HTTP headers (Content-Signal, Link describedby)
+  ├── llms.txt                # Índice + positioning para crawlers IA
+  ├── llms-full.txt           # Contenido completo en markdown para crawlers IA
+  ├── sitemap.xml             # Sitemap (home + 7 anchors)
+  ├── auth.md                 # Metadata de autenticación para agentes
+  ├── .well-known/
+  │   └── api-catalog         # Linkset JSON (RFC 9727) para discovery
+  └── {indexnow-key}.txt      # Verificación IndexNow
 
-## Can I connect a custom domain to my Lovable project?
+src/
+  ├── components/             # Hero, About, HowItWorks, Services, ForCompanies,
+  │                           # Testimonials, FAQ, Contact, Navbar, WhatsAppFloat
+  ├── pages/
+  │   ├── Index.tsx           # Página única (single-page landing)
+  │   └── NotFound.tsx
+  ├── lib/
+  │   └── config.ts           # WhatsApp number, payment links, hero video
+  └── App.tsx
 
-Yes, you can!
+scripts/
+  ├── prerender.mjs           # Inyecta schemas + SEO body en dist/index.html
+  └── indexnow.mjs            # Pinga IndexNow con URLs del sitemap
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+index.html                    # Source HTML (meta tags, OG, hreflang, AI links)
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## GEO / AEO (visibilidad en IA)
+
+El sitio está optimizado para aparecer en respuestas de ChatGPT, Claude,
+Perplexity, Copilot, Gemini y Apple Intelligence. Componentes clave:
+
+- **robots.txt** explícitamente permite GPTBot, ChatGPT-User, ClaudeBot,
+  Claude-User, PerplexityBot, Google-Extended, Applebot-Extended, etc.
+- **Content-Signal** declarado como HTTP response header (`_headers`) y en
+  robots.txt: `ai-train=yes, search=yes, ai-input=yes`
+- **llms.txt** y **llms-full.txt** como documentos optimizados para LLMs
+- **Schemas JSON-LD** ricos (Person, Service, EducationalOccupationalProgram,
+  Offer con AggregateOffer, FAQPage)
+- **HTTP Link headers** con `rel="describedby"` y `rel="alternate" type="text/markdown"`
+- **IndexNow** ping automático en cada build
+- **Cloudflare Crawler Hints** activado a nivel edge
+
+## Deploy
+
+Cualquier push a `main` dispara un build automático en Cloudflare Pages.
+URL temporal: `english-with-ale-landing.pages.dev`. Custom domain:
+`englishwithale.com`.
