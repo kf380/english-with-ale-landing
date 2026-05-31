@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, Phone } from "lucide-react";
+import { Mail, MessageCircle, CalendarCheck, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL } from "@/lib/config";
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/alejandra-jarupkin";
 
 const Contact = ({ id }: { id?: string }) => {
   const [formData, setFormData] = useState({
@@ -33,7 +35,24 @@ const Contact = ({ id }: { id?: string }) => {
     }));
   };
 
-  const contactInfo = [
+  const contactInfo: { icon: typeof Mail; title: string; content: string; link: string }[] = [];
+
+  if (CALENDLY_URL) {
+    contactInfo.push({
+      icon: CalendarCheck,
+      title: "Agendar online",
+      content: "Ver disponibilidad y reservar",
+      link: CALENDLY_URL
+    });
+  }
+
+  contactInfo.push(
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      content: "Respuesta en horario laboral",
+      link: buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis")
+    },
     {
       icon: Mail,
       title: "Email",
@@ -41,21 +60,12 @@ const Contact = ({ id }: { id?: string }) => {
       link: `mailto:${CONTACT_EMAIL}`
     },
     {
-      icon: Phone,
-      title: "WhatsApp",
-      content: "Respuesta en horario laboral",
-      link: buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis")
+      icon: Linkedin,
+      title: "LinkedIn",
+      content: "Perfil profesional de Ale",
+      link: LINKEDIN_URL
     }
-  ];
-
-  if (CALENDLY_URL) {
-    contactInfo.push({
-      icon: Mail,
-      title: "Reservar online",
-      content: "Calendly · ver disponibilidad",
-      link: CALENDLY_URL
-    });
-  }
+  );
 
   return (
     <section id={id} className="py-24 px-4 bg-background">

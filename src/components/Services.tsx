@@ -55,13 +55,31 @@ const Services = ({ id }: { id?: string }) => {
   return (
     <section id={id} className="py-24 px-4 bg-primary/10">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-foreground mb-4">
             Planes
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Mismo método, dos formas de empezar. La primera clase es siempre diagnóstico gratis para que pruebes antes de pagar.
           </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto mb-10">
+          <Card className="p-5 md:p-6 bg-secondary/30 border-secondary">
+            <div className="flex items-start gap-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                <ShieldCheck className="w-5 h-5 text-primary-foreground" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-base md:text-lg font-semibold text-foreground">
+                  Garantía sin riesgo
+                </h3>
+                <p className="text-sm md:text-base text-muted-foreground">
+                  La primera clase es gratis. Si después del primer mes no sientes progreso concreto, te devuelvo el importe del Plan Mensual sin preguntas. Cancelas cuando quieras.
+                </p>
+              </div>
+            </div>
+          </Card>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -120,23 +138,7 @@ const Services = ({ id }: { id?: string }) => {
           Pagos seguros en USD con tarjeta Visa, Mastercard o Amex · Sin contratos largos · Cancelas cuando quieras
         </p>
 
-        <div className="max-w-3xl mx-auto mt-12 space-y-6">
-          <Card className="p-6 md:p-8 bg-secondary/30 border-secondary">
-            <div className="flex flex-col md:flex-row md:items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 bg-primary rounded-full flex items-center justify-center">
-                <ShieldCheck className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <div className="space-y-2">
-                <h3 className="text-xl font-semibold text-foreground">
-                  Garantía sin riesgo
-                </h3>
-                <p className="text-muted-foreground">
-                  Si tu primera clase diagnóstica no te aporta valor real, no pagas nada — es gratuita por definición. Si después del primer mes no sientes progreso concreto, te devuelvo el importe del Plan Mensual sin preguntas. Cancelas cuando quieras.
-                </p>
-              </div>
-            </div>
-          </Card>
-
+        <div className="max-w-3xl mx-auto mt-12">
           <Card className="p-6 md:p-8 bg-primary/5 border-primary/20">
             <div className="space-y-3">
               <h3 className="text-lg font-semibold text-foreground">

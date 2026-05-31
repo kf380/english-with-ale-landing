@@ -1,5 +1,7 @@
-import { MapPin, Clock, GraduationCap } from "lucide-react";
+import { MapPin, Clock, GraduationCap, Linkedin } from "lucide-react";
 import heroImage from "@/assets/hero-teacher.jpg";
+
+const LINKEDIN_URL = "https://www.linkedin.com/in/alejandra-jarupkin";
 
 const About = ({ id }: { id?: string }) => {
   return (
@@ -13,7 +15,7 @@ const About = ({ id }: { id?: string }) => {
               </h2>
               <div className="space-y-4 text-lg text-muted-foreground">
                 <p>
-                  Soy Alejandra, profesora de inglés. Llevo <strong>8 años</strong> trabajando con adultos profesionales que necesitan usar el inglés todos los días en su trabajo.
+                  Soy Alejandra, profesora de inglés. <strong>28+ años de carrera</strong>, los últimos 8 con foco específico en adultos profesionales que necesitan usar el inglés todos los días en su trabajo.
                 </p>
                 <p>
                   Trabajo principalmente con <strong>latinos que viven en Estados Unidos</strong> — sobre todo en Texas, Florida y California — y con profesionales latinoamericanos que reportan a equipos americanos o que están buscando dar el salto a USA.
@@ -33,8 +35,8 @@ const About = ({ id }: { id?: string }) => {
                 <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg">
                   <GraduationCap className="w-6 h-6 text-primary flex-shrink-0 mt-0.5" />
                   <div>
-                    <div className="text-base font-semibold text-foreground">8 años</div>
-                    <div className="text-xs text-muted-foreground">enseñando a profesionales</div>
+                    <div className="text-base font-semibold text-foreground">28+ años</div>
+                    <div className="text-xs text-muted-foreground">de carrera docente</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg">
@@ -52,6 +54,16 @@ const About = ({ id }: { id?: string }) => {
                   </div>
                 </div>
               </div>
+
+              <a
+                href={LINKEDIN_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary-dark transition-colors pt-2"
+              >
+                <Linkedin className="w-4 h-4" />
+                Ver perfil profesional verificable en LinkedIn
+              </a>
             </div>
 
             <div className="relative">
