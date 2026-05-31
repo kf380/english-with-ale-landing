@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Mail, MessageCircle, CalendarCheck, Linkedin } from "lucide-react";
+import { Mail, MessageCircle, CalendarCheck, Linkedin, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL } from "@/lib/config";
+import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL, WEB3FORMS_KEY } from "@/lib/config";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/alejandra-jarupkin";
 
@@ -16,16 +16,56 @@ const Contact = ({ id }: { id?: string }) => {
     phone: '',
     message: ''
   });
+  const [submitting, setSubmitting] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO(kevin): conectar form a backend o servicio tipo Formspree/Resend
-    toast({
-      title: "Mensaje enviado",
-      description: "Te contactamos en menos de 24 horas hábiles.",
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setSubmitting(true);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || 'No proporcionado',
+          message: formData.message,
+          from_name: 'English with Ale — Landing',
+          subject: `Nueva consulta de ${formData.name} desde englishwithale.com`,
+          replyto: formData.email,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: 'Mensaje enviado',
+          description: 'Te respondo en menos de 24 horas hábiles. Si es urgente, escribime por WhatsApp.',
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        toast({
+          title: 'No pudimos enviar el mensaje',
+          description: 'Probá de nuevo o escribime directo por WhatsApp.',
+          variant: 'destructive',
+        });
+      }
+    } catch (error) {
+      toast({
+        title: 'Error de conexión',
+        description: 'Probá de nuevo o escribime directo por WhatsApp.',
+        variant: 'destructive',
+      });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -125,10 +165,18 @@ const Contact = ({ id }: { id?: string }) => {
                 />
                 <Button
                   type="submit"
+                  disabled={submitting}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold"
                   size="lg"
                 >
-                  Reservar clase diagnóstica gratis
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Enviando...
+                    </>
+                  ) : (
+                    'Enviar mensaje'
+                  )}
                 </Button>
               </form>
             </Card>

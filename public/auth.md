@@ -25,10 +25,10 @@ For AI agents that want to ingest English with Ale content:
 For students who want to book a free diagnostic class (30 min, no compromise):
 - Calendly: https://calendly.com/english-ale25/diagnostica
 - WhatsApp: +54 9 3454 14-2892
-- Email: englishwithale@gmail.com
+- Email: info@englishwithale.com
 
 For companies interested in B2B group programs for bilingual teams:
-- Email: englishwithale@gmail.com with subject "B2B inquiry — [company name]"
+- Email: info@englishwithale.com with subject "B2B inquiry — [company name]"
 - Response within 24 business hours
 
 ## About the teacher

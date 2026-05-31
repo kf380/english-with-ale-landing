@@ -15,7 +15,12 @@ export const HERO_VIDEO_SRC = "";
 export const PAYMENT_LINK_MONTHLY = "";
 export const PAYMENT_LINK_QUARTERLY = "";
 
-export const CONTACT_EMAIL = "englishwithale@gmail.com";
+// Email branded via Cloudflare Email Routing: info@englishwithale.com → forwards a Gmail real
+export const CONTACT_EMAIL = "info@englishwithale.com";
+
+// Web3Forms access key — recibe submissions del form de Contact y las manda al CONTACT_EMAIL
+// Key es client-side por diseño de Web3Forms (no es secreto). Anti-spam manejado por su side.
+export const WEB3FORMS_KEY = "57ab7362-5f32-4188-a5b9-b545f55d815d";
 
 export const buildWhatsAppLink = (message: string): string => {
   const encoded = encodeURIComponent(message);

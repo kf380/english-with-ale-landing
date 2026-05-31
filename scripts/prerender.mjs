@@ -35,7 +35,7 @@ const personSchema = {
   description:
     'Profesora de inglés con 28+ años de experiencia y 8 años especializados en adultos profesionales. Foco en desbloquear el habla inglesa profesional para latinos hispanohablantes en USA.',
   url: BASE_URL,
-  email: 'englishwithale@gmail.com',
+  email: 'info@englishwithale.com',
   knowsLanguage: ['es', 'en'],
   sameAs: [
     'https://www.linkedin.com/in/alejandra-jarupkin',
@@ -73,7 +73,7 @@ const organizationSchema = {
   description:
     'Marca de coaching de inglés 1:1 de Alejandra Jarupkin para profesionales latinos en Estados Unidos.',
   founder: { '@type': 'Person', name: 'Alejandra Jarupkin' },
-  email: 'englishwithale@gmail.com',
+  email: 'info@englishwithale.com',
   telephone: '+54-9-3454-14-2892',
   areaServed: [
     { '@type': 'Country', name: 'United States' },
@@ -348,7 +348,7 @@ const SEO_BODY = `<div class="prerender-fallback" aria-hidden="false">
     <p>30 minutos sin compromiso. Identificamos tus bloqueos reales con el inglés y te llevás un plan claro al final, decidas o no contratar.</p>
     <ul>
       <li><strong>Reserva online (Calendly):</strong> <a href="https://calendly.com/english-ale25/diagnostica">calendly.com/english-ale25/diagnostica</a></li>
-      <li><strong>Email:</strong> englishwithale@gmail.com</li>
+      <li><strong>Email:</strong> info@englishwithale.com</li>
       <li><strong>WhatsApp:</strong> +54 9 3454 14-2892 (respuesta en horario laboral)</li>
     </ul>
     <p>Pagos seguros en USD con tarjeta Visa, Mastercard o Amex. Facturación mensual o trimestral según el plan.</p>
