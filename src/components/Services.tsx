@@ -1,10 +1,11 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck } from "lucide-react";
-import { buildWhatsAppLink, CALENDLY_URL, PAYMENT_LINK_MONTHLY, PAYMENT_LINK_QUARTERLY } from "@/lib/config";
+import { buildWhatsAppLink, CALENDLY_URL, PAYMENT_LINK_MONTHLY, PAYMENT_LINK_QUARTERLY, trackLead } from "@/lib/config";
 
 const Services = ({ id }: { id?: string }) => {
-  const openTrialChat = () => {
+  const openTrialChat = (source = 'services-cta-trial') => {
+    trackLead(source);
     if (CALENDLY_URL) {
       window.open(CALENDLY_URL, '_blank');
       return;

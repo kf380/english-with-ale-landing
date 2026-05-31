@@ -22,6 +22,20 @@ export const CONTACT_EMAIL = "info@englishwithale.com";
 // Key es client-side por diseño de Web3Forms (no es secreto). Anti-spam manejado por su side.
 export const WEB3FORMS_KEY = "57ab7362-5f32-4188-a5b9-b545f55d815d";
 
+// Meta Pixel — instalado en index.html `<head>`. Helper para disparar Lead event desde CTAs.
+// Lead se usa para optimizar campaign en Meta Ads Manager.
+declare global {
+  interface Window {
+    fbq?: (action: string, event: string, params?: Record<string, unknown>) => void;
+  }
+}
+
+export const trackLead = (source: string) => {
+  if (typeof window !== 'undefined' && window.fbq) {
+    window.fbq('track', 'Lead', { content_name: source });
+  }
+};
+
 export const buildWhatsAppLink = (message: string): string => {
   const encoded = encodeURIComponent(message);
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;

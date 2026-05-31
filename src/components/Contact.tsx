@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Mail, MessageCircle, CalendarCheck, Linkedin, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL, WEB3FORMS_KEY } from "@/lib/config";
+import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL, WEB3FORMS_KEY, trackLead } from "@/lib/config";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/alejandra-jarupkin";
 
@@ -45,6 +45,7 @@ const Contact = ({ id }: { id?: string }) => {
       const result = await response.json();
 
       if (result.success) {
+        trackLead('contact-form-submit');
         toast({
           title: 'Mensaje enviado',
           description: 'Te respondo en menos de 24 horas hábiles. Si es urgente, escribime por WhatsApp.',

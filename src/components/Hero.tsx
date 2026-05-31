@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-teacher.jpg";
-import { buildWhatsAppLink, HERO_VIDEO_SRC } from "@/lib/config";
+import { buildWhatsAppLink, HERO_VIDEO_SRC, trackLead } from "@/lib/config";
 
 const Hero = () => {
   const scrollToWhatsApp = () => {
+    trackLead('hero-cta-trial');
     window.open(buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis"), '_blank');
   };
 
