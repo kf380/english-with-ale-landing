@@ -1,0 +1,7 @@
+name = "english-with-ale-landing"
+compatibility_date = "2025-01-01"
+account_id = "c772821e17c5eba3cf8ae33ae7c46ba3"
+
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"
