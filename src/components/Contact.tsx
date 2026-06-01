@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
 import { Mail, MessageCircle, CalendarCheck, Linkedin, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL, WEB3FORMS_KEY, trackLead } from "@/lib/config";
+import { buildWhatsAppLink, CONTACT_EMAIL, CALENDLY_URL, WEB3FORMS_KEY, trackLead, trackSchedule, trackContact } from "@/lib/config";
 
 const LINKEDIN_URL = "https://www.linkedin.com/in/alejandra-jarupkin";
 
@@ -76,14 +76,18 @@ const Contact = ({ id }: { id?: string }) => {
     }));
   };
 
-  const contactInfo: { icon: typeof Mail; title: string; content: string; link: string }[] = [];
+  const contactInfo: { icon: typeof Mail; title: string; content: string; link: string; onTrack?: () => void }[] = [];
 
   if (CALENDLY_URL) {
     contactInfo.push({
       icon: CalendarCheck,
       title: "Agendar online",
       content: "Ver disponibilidad y reservar",
-      link: CALENDLY_URL
+      link: CALENDLY_URL,
+      onTrack: () => {
+        trackLead('contact-section-calendly');
+        trackSchedule('contact-section-calendly');
+      },
     });
   }
 
@@ -92,19 +96,22 @@ const Contact = ({ id }: { id?: string }) => {
       icon: MessageCircle,
       title: "WhatsApp",
       content: "Respuesta en horario laboral",
-      link: buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis")
+      link: buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis"),
+      onTrack: () => trackLead('contact-section-whatsapp'),
     },
     {
       icon: Mail,
       title: "Email",
       content: CONTACT_EMAIL,
-      link: `mailto:${CONTACT_EMAIL}`
+      link: `mailto:${CONTACT_EMAIL}`,
+      onTrack: () => trackContact('contact-section-email'),
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
       content: "Perfil profesional de Ale",
-      link: LINKEDIN_URL
+      link: LINKEDIN_URL,
+      onTrack: () => trackContact('contact-section-linkedin'),
     }
   );
 
@@ -189,7 +196,13 @@ const Contact = ({ id }: { id?: string }) => {
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 const content = info.link ? (
-                  <a href={info.link} target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-dark transition-colors">
+                  <a
+                    href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={info.onTrack}
+                    className="text-primary hover:text-primary-dark transition-colors"
+                  >
                     {info.content}
                   </a>
                 ) : (

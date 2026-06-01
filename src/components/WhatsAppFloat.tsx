@@ -1,8 +1,9 @@
 import { MessageCircle } from "lucide-react";
-import { buildWhatsAppLink } from "@/lib/config";
+import { buildWhatsAppLink, trackLead } from "@/lib/config";
 
 const WhatsAppFloat = () => {
   const handleWhatsAppClick = () => {
+    trackLead('whatsapp-float');
     window.open(buildWhatsAppLink("Hola Ale, quiero reservar mi clase diagnóstica gratis"), '_blank');
   };
 
